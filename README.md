@@ -15,12 +15,11 @@ def get_data():
 
 	return users
 def signup(usr,pwd):
-  users = get_data()
-  users[usr] = {}
-  users[usr]["password"] = pwd
-  with open("data/template.json","w") as f:
+	users = get_data()	
+	users[usr] = {}
+	users[usr]["password"] = pwd
+	with open("data/template.json","w") as f:
 		json.dump(users,f)
-signup("eris","1234")
 ```
 sign up basically sets the value to what it is given
 in the part where we get_data()
@@ -65,32 +64,30 @@ def get_data():
   with open("data/template.json","r") as f:
   	users = json.load(f)
 
-	return users
+  return users
 def signup(usr,pwd):
-  users = get_data()
-  users[usr] = {}
-  users[usr]["password"] = pwd
-  with open("data/template.json","w") as f:
+	users = get_data()	
+	users[usr] = {}
+	users[usr]["password"] = pwd
+	with open("data/template.json","w") as f:
 		json.dump(users,f)
 def check4json():
   try:
     os.system("cat data/template.json")
-   except FileNotFoundError:
+  except FileNotFoundError:
     os.system("touch data/template.json")
     os.system("echo {} > data/template.json")
 query = input("username: ")
 print(query)
 query2 = input("password: ")
 print(query2)
+if query2 == "signup":
+	signup(query,query2)
 users = get_data()
-if users[query] not in users:
-  print("signing you up, retry the login now")
-  signup(query,query2)
-if users[query] in users:
-  if query2 == users[query]["password"]:
-    print("logged in....")
-  if query2 != users[query]["password"]:
-    print("password wrong retry later")
+if query2 == users[query]["password"]:
+	print("logged in....")
+if query2 != users[query]["password"]:
+	print("password wrong retry later or type signup in password to signup")
 ```
 so what we've done is taken the values given, and checked it with the values we have
 since we have "eris" in username, if anyone types anything but eris they will be registered
