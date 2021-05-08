@@ -84,10 +84,14 @@ print(query2)
 if query2 == "signup":
 	signup(query,query2)
 users = get_data()
-if query2 == users[query]["password"]:
-	print("logged in....")
-if query2 != users[query]["password"]:
-	print("password wrong retry later or type signup in password to signup")
+try:
+	if query2 == users[query]["password"]:
+		print("logged in....")
+	if query2 != users[query]["password"]:
+		print("password")
+except KeyError:
+	signup(query,query2)
+	print("signed you up")
 ```
 so what we've done is taken the values given, and checked it with the values we have
 since we have "eris" in username, if anyone types anything but eris they will be registered
