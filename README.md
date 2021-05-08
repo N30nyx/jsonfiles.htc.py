@@ -53,7 +53,7 @@ import os
 def check4json():
   try:
     os.system("cat data/template.json")
-   except FileNotFoundError:
+  except FileNotFoundError:
     os.system("touch data/template.json")
     os.system("echo {} > data/template.json")
 ```
@@ -79,7 +79,7 @@ def check4json():
     os.system("touch data/template.json")
     os.system("echo {} > data/template.json")
 query = input("username: ")
-print("query")
+print(query)
 query2 = input("password: ")
 print(query2)
 users = get_data()
